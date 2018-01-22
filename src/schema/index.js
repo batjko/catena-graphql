@@ -1,4 +1,4 @@
-import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools'
+import { makeExecutableSchema } from 'graphql-tools'
 
 import { getDisclosure, getDisclosures, MultiQuery } from '../providers/catena'
 
@@ -65,7 +65,7 @@ const resolvers = {
     disclosures: (_, args: MultiQuery) => getDisclosures(args),
   },
   Disclosure: {
-    // alias for a nested object, effectively lifting it up to the root object
+    // alias resolver for a nested object, effectively lifting it up to the root object
     timestamp: ({ blockchain }) => blockchain.blockTimestamp,
   },
 }
