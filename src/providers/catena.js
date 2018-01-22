@@ -1,19 +1,8 @@
 import axios from 'axios'
 
-type sortOrder = '1' | '-1' | 'desc' | 'asc' | 'ascending' | 'descending'
-type language = 'en' | 'fr' // as supported by catena API
+import { MultiQuery, Disclosure } from './catena-types'
 
-export type MultiQuery = {
-  format: ?string,
-  q: ?string,
-  sortField: ?string,
-  sortDir: ?sortOrder,
-  limit: ?number,
-  page: ?number,
-  lng: ?language,
-}
-
-export async function getDisclosures(args: MultiQuery): Promise<Array<any>> {
+export async function getDisclosures(args: MultiQuery): Promise<Array<Disclosure>> {
   console.info(`\nQuerying Catena API... `)
 
   const {
@@ -50,7 +39,7 @@ export async function getDisclosures(args: MultiQuery): Promise<Array<any>> {
   return response.data.results
 }
 
-export async function getDisclosure(id: string): Promise<any> {
+export async function getDisclosure(id: string): Promise<Disclosure> {
   console.info(`\nQuerying Catena API for id ${id}... `)
 
   const response = await axios({

@@ -1,6 +1,7 @@
 import { makeExecutableSchema } from 'graphql-tools'
 
-import { getDisclosure, getDisclosures, MultiQuery } from '../providers/catena'
+import { getDisclosure, getDisclosures } from '../providers/catena'
+import { MultiQuery, Disclosure } from '../providers/catena-types'
 
 const typeDefs = `
   enum DisclosuresFormat {
@@ -59,10 +60,11 @@ const typeDefs = `
     disclosure(id: ID!): Disclosure
   }
 `
+
 const resolvers = {
   Query: {
-    disclosure: (_, { id }) => getDisclosure(id),
-    disclosures: (_, args: MultiQuery) => getDisclosures(args),
+    disclosure: (_, { id }: { id: string }): Promise<Disclosure> => getDisclosure(id),
+    disclosures: (_, args: MultiQuery): Promise<Array<Disclosure>> => getDisclosures(args),
   },
   Disclosure: {
     // alias resolver for a nested object, effectively lifting it up to the root object
