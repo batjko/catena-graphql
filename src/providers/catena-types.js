@@ -2,6 +2,15 @@
 export type SortOrder = '1' | '-1' | 'desc' | 'asc' | 'ascending' | 'descending'
 export type Language = 'en' | 'fr'
 
+export type Blockchain = {
+  txId: string,
+  networkId: string,
+  blockNumber: number,
+  blockTimestamp: number,
+  rowNumber: number,
+  contractAddress: string,
+}
+
 export type Disclosure = {
   id: string,
   date: string,
@@ -10,14 +19,7 @@ export type Disclosure = {
     countryCode: string,
     regionCode: string,
   },
-  blockchain: {
-    txId: string,
-    networkId: string,
-    blockNumber: number,
-    blockTimestamp: number,
-    rowNumber: number,
-    contractAddress: string,
-  },
+  blockchain: Blockchain,
   lng: Language,
   amountFormatted: string,
   organization: string,

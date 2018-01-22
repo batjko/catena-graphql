@@ -1,7 +1,7 @@
 import { makeExecutableSchema } from 'graphql-tools'
 
 import { getDisclosure, getDisclosures } from '../providers/catena'
-import { MultiQuery, Disclosure } from '../providers/catena-types'
+import { MultiQuery, Disclosure, Blockchain } from '../providers/catena-types'
 
 const typeDefs = `
   enum DisclosuresFormat {
@@ -68,7 +68,7 @@ const resolvers = {
   },
   Disclosure: {
     // alias resolver for a nested object, effectively lifting it up to the root object
-    timestamp: ({ blockchain }) => blockchain.blockTimestamp,
+    timestamp: ({ blockchain }: { blockchain: Blockchain }) => blockchain.blockTimestamp,
   },
 }
 
