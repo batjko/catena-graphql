@@ -3,7 +3,7 @@ import axios from 'axios'
 import { MultiQuery, Disclosure } from './catena-types'
 
 export async function getDisclosures(args: MultiQuery): Promise<Array<Disclosure>> {
-  console.info(`\nQuerying Catena API... `)
+  console.info(`\nQuerying Catena API (page ${args.page || 1})... `)
 
   const {
     q,
@@ -30,11 +30,8 @@ export async function getDisclosures(args: MultiQuery): Promise<Array<Disclosure
     },
   })
 
-  console.info(
-    `\nReceived ${response.data.limit} / ${response.data.total} results (page ${
-      response.data.page
-    } / ${response.data.pages}).`
-  )
+  const { limit: size, total, page: pageNum, pages } = response.data
+  console.info(`Retrieved ${size} / ${total} results (page ${pageNum} / ${pages}).`)
 
   return response.data.results
 }
@@ -50,11 +47,8 @@ export async function getDisclosure(id: string): Promise<Disclosure> {
     },
   })
 
-  console.info(
-    `\nReceived disclosure id '${response.data.id} (${response.data.amountFormatted} ${
-      response.data.fundingType
-    })'.`
-  )
+  const { amountFormatted, fundingType, recipient } = response.data
+  console.info(`Retrieved disclosure for ${amountFormatted} ${fundingType} to ${recipient}.`)
 
   return response.data
 }
