@@ -37,6 +37,7 @@ export async function getDisclosures(args: MultiQuery): Promise<Array<Disclosure
 }
 
 export async function getDisclosure(id: string): Promise<Disclosure> {
+  if (!id) throw new Error('Cannot fetch disclosure: id parameter not provided!')
   console.info(`\nQuerying Catena API for id ${id}... `)
 
   const response = await axios({
