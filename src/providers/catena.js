@@ -33,7 +33,7 @@ export async function getDisclosures(args: MultiQuery): Promise<Array<Disclosure
   const { limit: size, total, page: pageNum, pages, results } = response.data
   console.info(`Retrieved ${size} / ${total} results (page ${pageNum} / ${pages}).`)
 
-  return results
+  return response.data
 }
 
 export async function getDisclosure(id: string): Promise<Disclosure> {

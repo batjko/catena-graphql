@@ -31,6 +31,14 @@ const typeDefs = `
     country: String
   }
 
+  type Disclosures {
+    limit: Int
+    total: Int
+    page: Int
+    pages: Int
+    results: [Disclosure]
+  }
+
   type Disclosure {
     id: ID
     date: String
@@ -44,7 +52,7 @@ const typeDefs = `
     recipient: String,
     fundingType: String,
     purpose: String,
-    address: Address
+    address: Address,
   }
 
   type Query {
@@ -56,7 +64,7 @@ const typeDefs = `
       limit: Int
       page: Int
       lng: String
-    ): [Disclosure]
+    ): Disclosures
     disclosure(id: ID!): Disclosure
   }
 `
