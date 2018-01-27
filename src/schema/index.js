@@ -1,4 +1,5 @@
 import { makeExecutableSchema } from 'graphql-tools'
+import moment from 'moment'
 
 import { getDisclosure, getDisclosures } from '../providers/catena'
 import { MultiQuery, Disclosure, Blockchain } from '../providers/catena-types'
@@ -42,7 +43,7 @@ const typeDefs = `
   type Disclosure {
     id: ID
     date: String
-    timestamp: Float
+    timestamp: String
     amount: Int
     location: Location
     blockchain: Blockchain
@@ -76,7 +77,8 @@ const resolvers = {
   },
   Disclosure: {
     // alias resolver for a nested object, effectively lifting it up to the root object
-    timestamp: ({ blockchain }: { blockchain: Blockchain }) => blockchain.blockTimestamp,
+    timestamp: ({ blockchain }: { blockchain: Blockchain }) =>
+      moment.unix(blockchain.blockTimestamp).toISOString(),
   },
 }
 

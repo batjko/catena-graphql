@@ -28,8 +28,9 @@ Nothing special. I just saw [this Canadian news article](https://globalnews.ca/n
 
 * [x] Write some tests, you savage!
 * [x] Expose Catena's pagination results
-* [ ] Convert timestamps into ISO (Catena doesn't currently provide timezones, but is probably... Ontario-based?)
+* [x] Convert timestamp into ISO
 * [ ] Add a Dockerfile
 * [ ] Enrich result with data from [Etherscan](https://etherscan.io/apis)
 * [ ] Support Catena's localization (changes the response format)
 * [ ] See if `organization` and `recipient` can also be enriched from somewhere (e.g. address lookup).
+* [ ] Add a CI config
