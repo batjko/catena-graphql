@@ -69,7 +69,7 @@ describe('Catena Provider', () => {
       expect(axios.mock.calls[0][0].params).toHaveProperty('page', 5)
     })
 
-    it('applies default for limit, if not provided', async () => {
+    it('applies default limit of 20, if not provided', async () => {
       axios.mockImplementation(() => Promise.resolve({ data: {} }))
 
       await getDisclosures({})
@@ -78,7 +78,7 @@ describe('Catena Provider', () => {
       expect(axios.mock.calls[0][0].params).toHaveProperty('limit', 20)
     })
 
-    it('applies defaults for lng, if not provided', async () => {
+    it('applies English as default language, if not provided', async () => {
       axios.mockImplementation(() => Promise.resolve({ data: {} }))
 
       await getDisclosures({})
