@@ -90,19 +90,19 @@ describe('Catena Provider', () => {
     it('returns expected number of results', async () => {
       axios.mockImplementation(() => Promise.resolve(okResponse({ limit: 10, page: 1 })))
 
-      const result = await getDisclosures({})
+      const response = await getDisclosures({})
 
-      expect(result).toBeTruthy()
-      expect(result).toHaveLength(2)
+      expect(response.results).toBeTruthy()
+      expect(response.results).toHaveLength(2)
     })
 
     it('returns the expected results', async () => {
       axios.mockImplementation(() => Promise.resolve(okResponse({ limit: 10, page: 1 })))
 
-      const result = await getDisclosures({})
+      const response = await getDisclosures({})
 
-      expect(result[0].id).toEqual('fakeId1')
-      expect(result[1].id).toEqual('fakeId2')
+      expect(response.results[0].id).toEqual('fakeId1')
+      expect(response.results[1].id).toEqual('fakeId2')
     })
   })
 })
