@@ -26,7 +26,7 @@ Nothing special. I just saw [this Canadian news article](https://globalnews.ca/n
 
 ## Todo
 
-* [ ] Write some tests, you savage!
+* [x] Write some tests, you savage!
 * [ ] Expose Catena's pagination results
 * [ ] Convert timestamps into ISO (Catena doesn't currently provide timezones, but is probably... Ontario-based?)
 * [ ] Add a Dockerfile
