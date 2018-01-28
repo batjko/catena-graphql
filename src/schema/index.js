@@ -73,6 +73,7 @@ const typeDefs = `
     purpose: String,
     address: Address,
 
+    # Transaction details from Etherscan
     transaction: Transaction
   }
 
