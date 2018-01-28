@@ -16,6 +16,7 @@ Nothing special. I just saw [this Canadian news article](https://globalnews.ca/n
 * [flow](https://flow.org/)... just for fun.
 * [axios](https://www.npmjs.com/package/axios) to make the REST calls to the Catena API.
 * [babel's env preset](https://babeljs.io/docs/plugins/preset-env), because nothing else matters.
+* [Etherscan's API](https://etherscan.io/apis) (you'll need to set the `ES_TOKEN` environment variable with your own API key, or use a `.env` file)
 
 ## Usage
 
@@ -30,7 +31,7 @@ Nothing special. I just saw [this Canadian news article](https://globalnews.ca/n
 * [x] Expose Catena's pagination results
 * [x] Convert timestamp into ISO
 * [ ] Add a Dockerfile
-* [x] Enrich result with data from [Etherscan](https://etherscan.io/apis)
+* [x] Enrich result with data from Etherscan
 * [ ] Support Catena's localization (changes the response format)
 * [ ] See if `organization` and `recipient` can also be enriched from somewhere (e.g. address lookup).
 * [ ] Add a CI config
