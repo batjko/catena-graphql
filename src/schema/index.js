@@ -3,6 +3,7 @@ import moment from 'moment'
 
 import { getDisclosure, getDisclosures } from '../providers/catena'
 import { MultiQuery, Disclosure, Blockchain } from '../providers/catena-types'
+import { getTransaction, getBalance, getTransactionList } from '../providers/etherscan'
 
 const typeDefs = `
   enum DisclosuresFormat {
@@ -32,6 +33,23 @@ const typeDefs = `
     country: String
   }
 
+  type Transaction {
+    blockHash: String,
+    blockNumber: String,
+    from: String,
+    gas: String,
+    gasPrice: String,
+    hash: String,
+    input: String,
+    nonce: String,
+    to: String,
+    transactionIndex: String,
+    value: String,
+    v: String,
+    r: String,
+    s: String
+  }
+
   type Disclosures {
     limit: Int
     total: Int
@@ -54,6 +72,8 @@ const typeDefs = `
     fundingType: String,
     purpose: String,
     address: Address,
+
+    transaction: Transaction
   }
 
   type Query {
@@ -79,6 +99,7 @@ const resolvers = {
     // alias resolver for a nested object, effectively lifting it up to the root object
     timestamp: ({ blockchain }: { blockchain: Blockchain }) =>
       moment.unix(blockchain.blockTimestamp).toISOString(),
+    transaction: ({ blockchain }: { blockchain: Blockchain }) => getTransaction(blockchain.txId),
   },
 }
 
