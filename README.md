@@ -30,7 +30,7 @@ Nothing special. I just saw [this Canadian news article](https://globalnews.ca/n
 * [x] Write some tests, you savage!
 * [x] Expose Catena's pagination results
 * [x] Convert timestamp into ISO
-* [ ] Add a Dockerfile
+* [x] Add a Dockerfile
 * [x] Enrich result with data from Etherscan
 * [ ] Support Catena's localization (changes the response format)
 * [ ] See if `organization` and `recipient` can also be enriched from somewhere (e.g. address lookup).
