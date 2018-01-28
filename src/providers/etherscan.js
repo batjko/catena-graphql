@@ -11,7 +11,7 @@ const api = ES.init(apiKey)
 
 export async function getTransaction(txhash: string): Promise<any> {
   const { result } = await api.proxy.eth_getTransactionByHash(txhash)
-  console.log(result)
+
   return result
 }
 
